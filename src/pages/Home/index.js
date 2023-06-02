@@ -29,6 +29,12 @@ function App() {
     }
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleGetData(); 
+    }
+  };
+
   return (
     <div className="App">
      <Header />
@@ -36,8 +42,14 @@ function App() {
       <img src={background} className="background" alt=" background app" />
       <div className="info">
        <div>
-        <input name="usuario" value={user} onChange={ event => setUser(event.target.value) }  placeholder="@username" />
-        <button onClick={handleGetData}>Buscar</button>
+        <input 
+        name="usuario" 
+        value={user} 
+        onChange={ event => setUser(event.target.value) }  
+        placeholder="@username" 
+        onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleGetData}  style={{ cursor: 'pointer' }} >Buscar</button>
        </div>
        {currentUser?.name ? (
         <>
